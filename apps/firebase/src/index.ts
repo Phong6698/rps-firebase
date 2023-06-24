@@ -3,6 +3,7 @@ import * as functions from 'firebase-functions';
 
 // The Firebase Admin SDK to access Firebase Features from within Cloud Functions.
 import * as admin from 'firebase-admin';
+import {ASharedInterface} from '@rps-firebase/shared';
 admin.initializeApp();
 
 // Set up extra settings. Since May 29, 2020, Firebase Firebase Added support for
@@ -18,5 +19,10 @@ admin.firestore().settings({
 
 export const helloWorld = functions.region('europe-west6').https.onRequest((request, response) => {
   functions.logger.info('Hello logs!', { structuredData: true });
-  response.send('Hello from Firebase!');
+  const something: ASharedInterface = {
+    name: 'Phong Firebase Function',
+    isSomething: true,
+    amount: 6
+  };
+  response.send(something);
 });

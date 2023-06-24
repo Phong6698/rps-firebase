@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import {ASharedInterface} from '@rps-firebase/shared';
+import {CommonModule} from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [CommonModule, RouterModule],
   selector: 'rps-firebase-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'rps-firebase';
+  something: ASharedInterface = {
+    name: 'Phong Angular App',
+    isSomething: true,
+    amount: 6
+  }
 }
