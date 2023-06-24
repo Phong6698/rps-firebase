@@ -1,9 +1,60 @@
 {
-  "hosting": [
-    {
-      "target": "rps-firebase",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
+  "hosting": {
+    "public": "dist/apps/rps-firebase",
+    "predeploy": ["npx nx build rps-firebase"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "apps/firebase/firestore.rules",
+    "indexes": "apps/firebase/firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "apps/firebase/storage.rules"
+  },
+  "functions": {
+    "codebase": "firebase",
+    "predeploy": ["npx nx build firebase"],
+    "runtime": "nodejs16",
+    "source": "dist/apps/firebase"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "pubsub": {
+      "port": 8085
+    },
+    "storage": {
+      "port": 9199
+    },
+    "eventarc": {
+      "port": 9299
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
 }
