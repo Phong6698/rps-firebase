@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "rps-firebase",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

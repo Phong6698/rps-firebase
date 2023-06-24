@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "rps-firebase-724d6": {
+      "hosting": {
+        "rps-firebase": [
+          "rps-firebase-724d6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "rps-firebase-724d6"
+  }
+}
