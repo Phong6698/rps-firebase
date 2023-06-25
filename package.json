@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "nx",
     "start": "nx serve rps-firebase",
-    "build": "nx build rps-firebase --configuration production"
+    "build.web": "nx build rps-firebase --configuration production",
+    "build.functions": "nx build firebase"
   },
   "private": true,
   "dependencies": {

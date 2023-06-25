@@ -4,10 +4,10 @@
   "scripts": {
     "lint": "nx lint firebase",
     "build": "nx build firebase",
-    "serve": "npm run build && firebase emulators:start --only functions --config firebase.json",
+    "serve": "npm run build && firebase emulators:start --only functions --config ../../firebase.json",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions --config firebase.json",
+    "deploy": "firebase deploy --only functions --config ../../firebase.json",
     "logs": "firebase functions:log"
   },
   "engines": {
