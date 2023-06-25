@@ -4,7 +4,7 @@ import {
   withEnabledBlockingInitialNavigation,
 } from '@angular/router';
 import {appRoutes} from './app.routes';
-import {initializeApp, provideFirebaseApp} from '@angular/fire/app';
+import {getApp, initializeApp, provideFirebaseApp} from '@angular/fire/app';
 import {environment} from '../environments/environment';
 import {getAuth, provideAuth} from '@angular/fire/auth';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebase))),
     importProvidersFrom(provideAuth(() => getAuth())),
     importProvidersFrom(provideFirestore(() => getFirestore())),
-    importProvidersFrom(provideFunctions(() => getFunctions())),
+    importProvidersFrom(provideFunctions(() => getFunctions(getApp(), 'europe-west6'))),
     importProvidersFrom(provideStorage(() => getStorage()))
   ],
 };

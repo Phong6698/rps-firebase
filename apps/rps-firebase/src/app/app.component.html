@@ -1,6 +1,37 @@
 <h1>POC: Rock Paper Scissors Firebase Multiplayer Game</h1>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="user$ | async as user">
+  <ng-container *ngIf="match$ | async as match">
+    <ng-container *ngIf="match.isOpen">
+      <h2>Searching Match</h2>
+    </ng-container>
+    <ng-container *ngIf="!match.isOpen">
+      <h2>Match Found</h2>
+      <ng-container *ngIf="!match.winner">
+        <button [disabled]="playerMove" (click)="move(MOVE.ROCK, match.id)">Rock</button>
+        <button [disabled]="playerMove" (click)="move(MOVE.PAPER, match.id)">Paper</button>
+        <button [disabled]="playerMove" (click)="move(MOVE.SCISSOR, match.id)">Scissor</button>
+        <p>You chose: {{playerMove}}</p>
+      </ng-container>
+      <ng-container *ngIf="match.winner">
+        <p *ngIf="match.winner === user.uid">You won!</p>
+        <p *ngIf="match.winner !== user.uid">You lost!</p>
+      </ng-container>
+    </ng-container>
+    <br>
+    <br>
+    <br>
+    <h2>Debug</h2>
+    <h3>User</h3>
+    <pre>{{user | json}}</pre>
+    <h3>Match</h3>
+    <pre>{{match | json}}</pre>
+  </ng-container>
+</ng-container>
+
 <h3>Shared Interface from Angular App:</h3>
 <pre>{{something | json}}</pre>
-<router-outlet></router-outlet>
 <h3>Shared Interface from Firebase Function:</h3>
 <a href="https://europe-west6-rps-firebase-724d6.cloudfunctions.net/helloWorld">https://europe-west6-rps-firebase-724d6.cloudfunctions.net/helloWorld</a>
